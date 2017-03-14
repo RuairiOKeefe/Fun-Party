@@ -16,7 +16,10 @@ class GSquares implements CSProcess {
     def testList =  [ new GNumbers   ( outChannel: N2I.out() ),
                       new GIntegrate ( inChannel: N2I.in(), 
                                        outChannel: I2P.out() ),
-                      // you will need to modify thi twice
+								   
+						new GSPairsB(inChannel: I2P.in(),
+									outChannel: outChannel)
+                      // you will need to modify this twice
                       //first modification is to insert a constructor for GSPairsA
                       // then run the network using TestGSCopy
                       //second modification replace the constructor for GSPairsA with GSPairsB

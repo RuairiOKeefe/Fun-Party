@@ -22,7 +22,7 @@ class ResetPrefix implements CSProcess {
       def index = alt.priSelect()
       if (index == 0 ) {    // resetChannel input
         def resetValue = resetChannel.read()
-		inChannel.read()
+		//inChannel.read()
         outChannel.write(resetValue)
       }
       else {    //inChannel input 

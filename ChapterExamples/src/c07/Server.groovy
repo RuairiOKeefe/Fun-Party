@@ -16,6 +16,7 @@ class Server implements CSProcess{
   def ChannelInput otherServerRequest
   def ChannelOutput otherServerSend  
   def dataMap = [ : ]    
+  def serverNumber
                 
   void run () {
     def CLIENT = 0

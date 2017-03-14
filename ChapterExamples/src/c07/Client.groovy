@@ -21,7 +21,9 @@ class Client implements CSProcess{
     for ( i in 0 ..< iterations) {
       def key = selectList[i]
       requestChannel.write(key)
+	  println("Reading: " + i)
       def v = receiveChannel.read()
+	  println("Read: " + i)
     }
 	
     println "Client $clientNumber has finished"
