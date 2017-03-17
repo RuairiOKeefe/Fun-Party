@@ -17,13 +17,17 @@ class Client implements CSProcess{
   void run () {
     def iterations = selectList.size
     println "Client $clientNumber has $iterations values in $selectList"
-	
-    for ( i in 0 ..< iterations) {
+    for ( i in 0 ..< iterations)
+	{
       def key = selectList[i]
+	  def expected = key*10
+	  def valuesMatch = false
+	  
       requestChannel.write(key)
-	  println("Reading: " + i)
       def v = receiveChannel.read()
-	  println("Read: " + i)
+	  if(v==expected)
+	  	valuesMatch = true
+		println("Client $clientNumber requested value at location $key. Expected matches Actual: $valuesMatch")
     }
 	
     println "Client $clientNumber has finished"

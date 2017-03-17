@@ -23,8 +23,8 @@ def eventTestList = [
 					 
       new UniformlyDistributedDelay ( inChannel:h2udd.in(), 
                                       outChannel: udd2prn.out(), 
-                                      minTime: 1000, 
-                                      maxTime: 2000 ), 
+                                      minTime: 10, 
+                                      maxTime: 400 ), 
 								  
       new GPrint ( inChannel: udd2prn.in(),
     		        heading : "Event Output",

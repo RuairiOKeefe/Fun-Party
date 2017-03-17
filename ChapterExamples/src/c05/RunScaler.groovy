@@ -27,16 +27,10 @@ def network = [ new GNumbers ( outChannel: data.out() ),
                             multiplier: 2,
                             scaling: 2 ),
 						
-                new Controller ( testInterval: 11000,
-                		         computeInterval: 3000,
-                		         addition: -1,
-                                 factor: oldScale.in(),
-                                 suspend: pause.out(),
-                                 injector: newScale.out() ),
-							 
-                new GPrint ( inChannel: scaledData.in(),
-                		     heading: "Original      Scaled",
-                		     delay: 0)
+                new UIController (oldScale: oldScale.in(),
+								 data: scaledData.in(),
+                                 pause: pause.out(),
+                                 newScale: newScale.out() )
               ]
 
 new PAR ( network ).run()                                                            

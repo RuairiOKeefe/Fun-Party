@@ -31,14 +31,19 @@ class Server implements CSProcess{
       switch (index) {		  
         case CLIENT :
           def key = clientRequest.read()
-          if ( dataMap.containsKey(key) ) 
-            clientSend.write(dataMap[key])          
+		  //println("Client: $serverNumber looking for Key: $key in Server: $serverNumber")
+          if ( dataMap.containsKey(key) )
+		  {
+            clientSend.write(dataMap[key])    
+			//println("Server: $serverNumber is sending Key: $key to Client: $serverNumber")
+		  } 
           else 
             thisServerRequest.write(key)
           //end if 
           break
         case OTHER_REQUEST :
           def key = otherServerRequest.read()
+		  //println("Server: " + (1 + (-serverNumber)) + " looking for Key: $key in Server: $serverNumber")
           if ( dataMap.containsKey(key) ) 
             otherServerSend.write(dataMap[key])          
           else 
@@ -47,6 +52,7 @@ class Server implements CSProcess{
           break
         case THIS_RECEIVE :
           clientSend.write(thisServerReceive.read() )
+		  //println("Server: $serverNumber has recieved value from Server: "+ (1 + (-serverNumber))+"")
           break
       } // end switch              
     } //end while   

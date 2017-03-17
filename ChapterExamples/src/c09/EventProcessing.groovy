@@ -17,17 +17,17 @@ class EventProcessing implements CSProcess{
     def mux2udd = Channel.one2one()
     def udd2prn = Channel.one2one()    
     def pList = [  
-                   new FairMultiplex ( inChannels: eventStreams,
+/*                     new FairMultiplex ( inChannels: eventStreams,
                                         outChannel: mux2udd.out() ),
-/*                   
+               
                    new PriMultiplex ( inChannels: eventStreams,
                                       outChannel: mux2udd.out() ),                     
-*/                   
+                  
 
-/*                   
+*/   /* */                  
                    new Multiplexer ( inChannels: eventStreams,
                                      outChannel: mux2udd.out() ),                     
-*/
+
                    new UniformlyDistributedDelay ( inChannel:mux2udd.in(), 
                                                    outChannel: udd2prn.out(), 
                                                    minTime: minTime, 

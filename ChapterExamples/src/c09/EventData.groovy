@@ -12,11 +12,13 @@ class EventData implements Serializable, JCSPCopy {
   def int source = 0
   def int data = 0
   def int missed = -1 
-   
+  def valid = false
+  
   def copy() {
     def e = new EventData ( source: this.source, 
                             data: this.data, 
-                            missed: this.missed )
+                            missed: this.missed,
+							valid: this.valid )
     return e
   }  
   
@@ -25,6 +27,7 @@ class EventData implements Serializable, JCSPCopy {
     s = s + source + ", data: "
     s = s + data + ", missed: " 
     s = s + missed + "]"
+	s = s + " Correct missed: $valid"
     return s
   }   
     

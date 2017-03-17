@@ -13,7 +13,7 @@ class ScaledData implements Serializable {
   def int scaled 
    
   def String toString () {
-	  def s = " " + original + "\t\t" + scaled
+	  def s = " " + original + "\t\t" + scaled + "\n"
 	  return s 
   }	
 }
